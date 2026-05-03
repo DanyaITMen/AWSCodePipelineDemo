@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      dotnet: 9.0
+  build:
+    commands:
+      - dotnet restore AWSCodePipelineDemo/AWSCodePipelineDemo.csproj
+      - dotnet build AWSCodePipelineDemo/AWSCodePipelineDemo.csproj
+  post_build:
+    commands:
+      - dotnet publish -c Release -o ./app/ AWSCodePipelineDemo/AWSCodePipelineDemo.csproj
+      - cp Procfile ./app/Procfile
+artifacts:
+  files:
+    - '**/*'
+  base-directory: app
