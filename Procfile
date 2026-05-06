@@ -1,1 +1,1 @@
-web: dotnet AWSCodePipelineDemo.dll
+web: dotnet /var/app/current/AWSCodePipelineDemo.dll
