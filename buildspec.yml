@@ -3,10 +3,9 @@ phases:
   build:
     commands:
       - dotnet restore AWSCodePipelineDemo/AWSCodePipelineDemo.csproj
-      - dotnet build AWSCodePipelineDemo/AWSCodePipelineDemo.csproj
   post_build:
     commands:
-      - dotnet publish -c Release -o ./app/ AWSCodePipelineDemo/AWSCodePipelineDemo.csproj
+      - dotnet publish -c Release -o ./app/ --self-contained true -r linux-x64 AWSCodePipelineDemo/AWSCodePipelineDemo.csproj
       - cp Procfile ./app/Procfile
 artifacts:
   files:
